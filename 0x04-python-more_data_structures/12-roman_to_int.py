@@ -11,10 +11,15 @@ def roman_to_int(roman_string):
             "D": 500,
             "M": 1000,
             }
-    roman_string = roman_string.replace("IV", "III")
-    .replace("IX", "VIIII")
-    .replace("XL", "XXXX")
-    .replace("XC", "LXXXX")
-    .replace("CD", "CCCC")
-    .replace("CM", "DCCCC")
+    replacements = {
+            "IV": "III",
+            "IX": "VIIII",
+            "XL": "XXXX",
+            "XC": "LXXXX",
+            "CD": "CCCC",
+            "CM", "DCCCC"
+            }
+    for i in replacements:
+        if i in roman_string:
+            roman_string.replace(i, replacements[i])
     return sum(map(lambda x: roman_int[x], roman_string))
