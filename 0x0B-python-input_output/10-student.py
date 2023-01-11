@@ -7,7 +7,7 @@ class Student:
     """Represents a student
     """
     def __init__(self, first_name, last_name, age):
-        """__init__ method
+        """Initialize new Student.
         """
         self.first_name = first_name
         self.last_name = last_name
@@ -20,7 +20,6 @@ class Student:
         Args:
             attrs (list): (Optional) The attributes to represent.
         """
-
         if (type(attrs) == list and
                 all(type(ele) == str for ele in attrs)):
             return {k: getattr(self, k) for k in attrs if hasattr(self, k)}
