@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Formats Python code to conform to pyscodestyle. 
+# Uses autopep8's aggressive level 2.
+# Just reduces the typing :)
+
+if [ -z "$1" ]; then
+  echo "Usage: $0 <python_file>"
+  exit 1
+fi
+
+filename=$(basename -- "$1")
+extension="${filename##*.}"
+
+if [ "$extension" != "py" ]; then
+  echo "Error: Argument passed has to be a python file."
+  exit 1
+fi
+
+if [ ! -e "$1" ]; then
+  echo "Error: File does not exist."
+  exit 1
+fi
+
+autopep8 --in-place --aggressive --aggressive "$1"
