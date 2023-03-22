@@ -19,7 +19,7 @@ if __name__ == "__main__":
     # create cursor (to be use in executing queries)
     cur = db.cursor()
     cur.execute(
-        "SELECT * FROM states WHERE name = %s ORDER BY id ASC", (argv[4],))
+            """SELECT * FROM states WHERE name = '{:s}' ORDER BY id ASC""".format(argv[4]))
     for row in cur.fetchall():
         print(row)
 
