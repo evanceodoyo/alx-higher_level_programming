@@ -25,7 +25,6 @@ if __name__ == "__main__":
                  ORDER BY cities.id ASC"""
     cursor.execute(sql_cmd, (argv[4],))
 
-    for row in cursor.fetchall():
-        print(row)
+    print(', '.join(["{:s}".format(row[0]) for row in cursor.fetchall()]))
     cursor.close()
     db.close()
