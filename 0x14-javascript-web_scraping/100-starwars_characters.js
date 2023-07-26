@@ -11,7 +11,11 @@ request(endpoint, function (error, response, body) {
     const charactersURLs = JSON.parse(body).characters;
     for (const characterURL of charactersURLs) {
       request(characterURL, function (error, response, body) {
-        console.log(JSON.parse(body).name);
+        if (error) {
+          console.log(error);
+        } else {
+          console.log(JSON.parse(body).name);
+        }
       });
     }
   }
