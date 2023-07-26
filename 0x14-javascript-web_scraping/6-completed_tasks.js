@@ -10,12 +10,11 @@ request(url, function (error, response, body) {
     const completedObj = {};
     const tasks = JSON.parse(body);
     for (const task of tasks) {
+      if (task.completed && !completedObj[task.userId]) {
+        completedObj[task.userId] = 0;
+      }
       if (task.completed) {
-        if (task.userId in completedObj) {
-          completedObj[task.userId] += 1;
-        } else {
-          completedObj[task.userId] = 1;
-        }
+        completedObj[task.userId] += 1;
       }
     }
     console.log(completedObj);
